@@ -1,0 +1,2803 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MapboxVectorStylesAndLayers />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <ParameterAction />
+    <ParameterActionClearSelection />
+    <SavingAnalyticObjects />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='Region Parameter' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;West&quot;'>
+        <calculation class='tableau' formula='&quot;West&quot;' />
+        <members>
+          <member value='&quot;Midwest&quot;' />
+          <member value='&quot;Northeast&quot;' />
+          <member value='&quot;South&quot;' />
+          <member value='&quot;West&quot;' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption='project-sunroof-state.csv+ (Multiple Connections)' inline='true' name='federated.0a5vver1d14klj0ztkctt16qyowr' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='project-sunroof-state' name='textscan.0s2jmne0jpvhbh105w3ij1i490tp'>
+            <connection class='textscan' directory='C:/Users/Pushe/Downloads/finaldata/project-sunroof' filename='project-sunroof-state.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='region lookup table' name='textscan.0y9n0qz1je601w1gcemq40vts2tx'>
+            <connection class='textscan' directory='C:/Users/Pushe/Downloads/finaldata/project-sunroof' filename='region lookup table.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[project-sunroof-state.csv].[state_name]' />
+              <expression op='[region lookup table.csv].[State]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.0s2jmne0jpvhbh105w3ij1i490tp' name='project-sunroof-state.csv' table='[project-sunroof-state#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='string' name='state_name' ordinal='0' />
+              <column datatype='real' name='count_qualified' ordinal='1' />
+              <column datatype='real' name='percent_qualified' ordinal='2' />
+              <column datatype='real' name='number_of_panels_total' ordinal='3' />
+              <column datatype='real' name='kw_total' ordinal='4' />
+              <column datatype='real' name='yearly_sunlight_kwh_n' ordinal='5' />
+              <column datatype='real' name='yearly_sunlight_kwh_s' ordinal='6' />
+              <column datatype='real' name='yearly_sunlight_kwh_e' ordinal='7' />
+              <column datatype='real' name='yearly_sunlight_kwh_w' ordinal='8' />
+              <column datatype='real' name='yearly_sunlight_kwh_f' ordinal='9' />
+              <column datatype='real' name='yearly_sunlight_kwh_total' ordinal='10' />
+              <column datatype='real' name='carbon_offset_metric_tons' ordinal='11' />
+              <column datatype='real' name='existing_installs_count' ordinal='12' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0y9n0qz1je601w1gcemq40vts2tx' name='region lookup table.csv' table='[region lookup table#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='string' name='State' ordinal='0' />
+              <column datatype='string' name='State Code' ordinal='1' />
+              <column datatype='string' name='Region' ordinal='2' />
+            </columns>
+          </relation>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[region lookup table.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>state_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[state_name]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>state_name</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>count_qualified</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[count_qualified]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>count_qualified</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>percent_qualified</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[percent_qualified]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>percent_qualified</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>number_of_panels_total</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[number_of_panels_total]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>number_of_panels_total</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>kw_total</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[kw_total]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>kw_total</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>yearly_sunlight_kwh_n</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[yearly_sunlight_kwh_n]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>yearly_sunlight_kwh_n</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>yearly_sunlight_kwh_s</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[yearly_sunlight_kwh_s]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>yearly_sunlight_kwh_s</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>yearly_sunlight_kwh_e</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[yearly_sunlight_kwh_e]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>yearly_sunlight_kwh_e</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>yearly_sunlight_kwh_w</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[yearly_sunlight_kwh_w]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>yearly_sunlight_kwh_w</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>yearly_sunlight_kwh_f</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[yearly_sunlight_kwh_f]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>yearly_sunlight_kwh_f</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>yearly_sunlight_kwh_total</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[yearly_sunlight_kwh_total]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>yearly_sunlight_kwh_total</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>carbon_offset_metric_tons</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[carbon_offset_metric_tons]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>carbon_offset_metric_tons</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>existing_installs_count</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[existing_installs_count]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>existing_installs_count</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>State</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[State]</local-name>
+            <parent-name>[region lookup table.csv]</parent-name>
+            <remote-alias>State</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>State Code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[State Code]</local-name>
+            <parent-name>[region lookup table.csv]</parent-name>
+            <remote-alias>State Code</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Region</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Region]</local-name>
+            <parent-name>[region lookup table.csv]</parent-name>
+            <remote-alias>Region</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='State Code to Show' datatype='string' name='[Calculation_2271503084944199683]' role='dimension' semantic-role='[State].[Name]' type='nominal'>
+        <calculation class='tableau' formula='IF [Region] = [Parameters].[Parameter 1]&#13;&#10;THEN [State Code]&#13;&#10;END' />
+      </column>
+      <column caption='% Qualified for Selected Region' datatype='real' name='[Calculation_2271503084946509828]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Region] = [Parameters].[Parameter 1]&#13;&#10;THEN [percent_qualified]&#13;&#10;END' />
+      </column>
+      <column caption='Total Power for Selected Region' datatype='real' name='[Calculation_2271503084946632709]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Region] = [Parameters].[Parameter 1]&#13;&#10;THEN [kw_total]&#13;&#10;END' />
+      </column>
+      <column caption='Solar-to-Carbon Offset Ratio' datatype='real' name='[Calculation_2271503084948234246]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[carbon_offset_metric_tons]/[kw_total]' />
+      </column>
+      <column caption='Install Ratio' datatype='real' default-format='p0.00%' name='[Calculation_2271503084949016583]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[existing_installs_count]/[count_qualified]' />
+      </column>
+      <column aggregate-role-from='[State]' datatype='string' name='[Region]' role='dimension' type='nominal' />
+      <column datatype='string' name='[State Code]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column datatype='string' name='[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='project-sunroof-state.csv' datatype='table' name='[__tableau_internal_object_id__].[project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788]' role='measure' type='quantitative' />
+      <column caption='Carbon Offset Metric Tons' datatype='real' name='[carbon_offset_metric_tons]' role='measure' type='quantitative' />
+      <column caption='Count Qualified' datatype='real' default-format='c#,##0,K;(#,##0,K)' name='[count_qualified]' role='measure' type='quantitative' />
+      <column caption='Existing Installs Count' datatype='real' name='[existing_installs_count]' role='measure' type='quantitative' />
+      <column caption='Kw Total' datatype='real' name='[kw_total]' role='measure' type='quantitative' />
+      <column caption='Number Of Panels Total' datatype='real' name='[number_of_panels_total]' role='measure' type='quantitative' />
+      <column caption='Percent Qualified' datatype='real' default-format='c#,##0&quot;%&quot;;(#,##0&quot;%&quot;)' name='[percent_qualified]' role='measure' type='quantitative' />
+      <column caption='State Name' datatype='string' name='[state_name]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='Yearly Sunlight Kwh E' datatype='real' name='[yearly_sunlight_kwh_e]' role='measure' type='quantitative' />
+      <column caption='Yearly Sunlight Kwh F' datatype='real' name='[yearly_sunlight_kwh_f]' role='measure' type='quantitative' />
+      <column caption='Yearly Sunlight Kwh N' datatype='real' name='[yearly_sunlight_kwh_n]' role='measure' type='quantitative' />
+      <column caption='Yearly Sunlight Kwh S' datatype='real' name='[yearly_sunlight_kwh_s]' role='measure' type='quantitative' />
+      <column caption='Yearly Sunlight Kwh Total' datatype='real' default-format='c#,##0,,,B;(#,##0,,,B)' name='[yearly_sunlight_kwh_total]' role='measure' type='quantitative' />
+      <column caption='Yearly Sunlight Kwh W' datatype='real' name='[yearly_sunlight_kwh_w]' role='measure' type='quantitative' />
+      <column-instance column='[State]' derivation='Attribute' name='[attr:State:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Calculation_2271503084949016583]' derivation='Sum' name='[sum:Calculation_2271503084949016583:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[yearly_sunlight_kwh_total]' derivation='Sum' name='[sum:yearly_sunlight_kwh_total:qk]' pivot='key' type='quantitative' />
+      <drill-paths>
+        <drill-path name='Region, State'>
+          <field>[Region]</field>
+          <field>[State]</field>
+        </drill-path>
+      </drill-paths>
+      <layout common-percentage='0.919289' dim-ordering='alphabetic' measure-ordering='alphabetic' parameter-percentage='0.0807114' show-structure='true' user-set-layout-v2='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:AdhocCluster:1:ok]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>1</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>5</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>4</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>9</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>7</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>10</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>3</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>6</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>2</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>8</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Region Parameter' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;West&quot;'>
+          <calculation class='tableau' formula='&quot;West&quot;' />
+        </column>
+      </datasource-dependencies>
+      <filter class='categorical' column='[State]' filter-group='2'>
+        <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+          <groupfilter function='level-members' level='[State]' />
+          <groupfilter function='union'>
+            <groupfilter function='member' level='[State]' member='%null%' />
+            <groupfilter function='member' level='[State]' member='&quot;Alaska&quot;' />
+            <groupfilter function='member' level='[State]' member='&quot;Hawaii&quot;' />
+          </groupfilter>
+        </groupfilter>
+      </filter>
+      <analytic-model>
+        <name>
+          <field name='[AnalyticModel:{d7828d00-c056-471c-9521-e978f74a4b21}]' />
+        </name>
+        <analytic-model-specifications class='cluster-specifications'>
+          <analysis-fields>
+            <field name='[federated.0a5vver1d14klj0ztkctt16qyowr].[attr:State:nk]' />
+            <field name='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:Calculation_2271503084949016583:qk]' />
+            <field name='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:yearly_sunlight_kwh_total:qk]' />
+          </analysis-fields>
+          <filter-fields />
+          <lod-fields />
+          <number-of-desired-clusters>0</number-of-desired-clusters>
+          <is-dissagregate>false</is-dissagregate>
+        </analytic-model-specifications>
+        <result-fields />
+      </analytic-model>
+      <object-graph>
+        <objects>
+          <object caption='project-sunroof-state.csv' id='project-sunroof-state.csv_01BD6EC0BE6D416CA03BD70936698788'>
+            <properties context=''>
+              <relation join='left' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[project-sunroof-state.csv].[state_name]' />
+                    <expression op='[region lookup table.csv].[State]' />
+                  </expression>
+                </clause>
+                <relation connection='textscan.0s2jmne0jpvhbh105w3ij1i490tp' name='project-sunroof-state.csv' table='[project-sunroof-state#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                    <column datatype='string' name='state_name' ordinal='0' />
+                    <column datatype='real' name='count_qualified' ordinal='1' />
+                    <column datatype='real' name='percent_qualified' ordinal='2' />
+                    <column datatype='real' name='number_of_panels_total' ordinal='3' />
+                    <column datatype='real' name='kw_total' ordinal='4' />
+                    <column datatype='real' name='yearly_sunlight_kwh_n' ordinal='5' />
+                    <column datatype='real' name='yearly_sunlight_kwh_s' ordinal='6' />
+                    <column datatype='real' name='yearly_sunlight_kwh_e' ordinal='7' />
+                    <column datatype='real' name='yearly_sunlight_kwh_w' ordinal='8' />
+                    <column datatype='real' name='yearly_sunlight_kwh_f' ordinal='9' />
+                    <column datatype='real' name='yearly_sunlight_kwh_total' ordinal='10' />
+                    <column datatype='real' name='carbon_offset_metric_tons' ordinal='11' />
+                    <column datatype='real' name='existing_installs_count' ordinal='12' />
+                  </columns>
+                </relation>
+                <relation connection='textscan.0y9n0qz1je601w1gcemq40vts2tx' name='region lookup table.csv' table='[region lookup table#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                    <column datatype='string' name='State' ordinal='0' />
+                    <column datatype='string' name='State Code' ordinal='1' />
+                    <column datatype='string' name='Region' ordinal='2' />
+                  </columns>
+                </relation>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='project-sunroof-state' inline='true' name='federated.1xlkvxe0a5m3dl11c2gmw1ht4evq' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='project-sunroof-state' name='textscan.1islxic0zlylnk16zwk6n0n3ixqe'>
+            <connection class='textscan' directory='C:/Users/Pushe/Downloads/finaldata/project-sunroof' filename='project-sunroof-state.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation name='Pivot' type='pivot'>
+          <columns>
+            <column datatype='string' name='Pivot Field Names' />
+            <column datatype='real' name='Pivot Field Values' />
+          </columns>
+          <tag name='Pivot Field Names'>
+            <value name='[Yearly Sunlight Kwh E]' />
+            <value name='[Yearly Sunlight Kwh F]' />
+            <value name='[Yearly Sunlight Kwh N]' />
+            <value name='[Yearly Sunlight Kwh S]' />
+            <value name='[Yearly Sunlight Kwh W]' />
+          </tag>
+          <groups>
+            <group name='Pivot Field Values'>
+              <field name='[project-sunroof-state.csv].[yearly_sunlight_kwh_e]' />
+              <field name='[project-sunroof-state.csv].[yearly_sunlight_kwh_f]' />
+              <field name='[project-sunroof-state.csv].[yearly_sunlight_kwh_n]' />
+              <field name='[project-sunroof-state.csv].[yearly_sunlight_kwh_s]' />
+              <field name='[project-sunroof-state.csv].[yearly_sunlight_kwh_w]' />
+            </group>
+          </groups>
+          <relation connection='textscan.1islxic0zlylnk16zwk6n0n3ixqe' name='project-sunroof-state.csv' table='[project-sunroof-state#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='string' name='state_name' ordinal='0' />
+              <column datatype='real' name='count_qualified' ordinal='1' />
+              <column datatype='real' name='percent_qualified' ordinal='2' />
+              <column datatype='real' name='number_of_panels_total' ordinal='3' />
+              <column datatype='real' name='kw_total' ordinal='4' />
+              <column datatype='real' name='yearly_sunlight_kwh_n' ordinal='5' />
+              <column datatype='real' name='yearly_sunlight_kwh_s' ordinal='6' />
+              <column datatype='real' name='yearly_sunlight_kwh_e' ordinal='7' />
+              <column datatype='real' name='yearly_sunlight_kwh_w' ordinal='8' />
+              <column datatype='real' name='yearly_sunlight_kwh_f' ordinal='9' />
+              <column datatype='real' name='yearly_sunlight_kwh_total' ordinal='10' />
+              <column datatype='real' name='carbon_offset_metric_tons' ordinal='11' />
+              <column datatype='real' name='existing_installs_count' ordinal='12' />
+            </columns>
+          </relation>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>state_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[state_name]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>state_name</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>count_qualified</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[count_qualified]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>count_qualified</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>percent_qualified</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[percent_qualified]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>percent_qualified</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>number_of_panels_total</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[number_of_panels_total]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>number_of_panels_total</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>kw_total</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[kw_total]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>kw_total</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>yearly_sunlight_kwh_total</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[yearly_sunlight_kwh_total]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>yearly_sunlight_kwh_total</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>carbon_offset_metric_tons</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[carbon_offset_metric_tons]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>carbon_offset_metric_tons</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>existing_installs_count</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[existing_installs_count]</local-name>
+            <parent-name>[project-sunroof-state.csv]</parent-name>
+            <remote-alias>existing_installs_count</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Pivot Field Names</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Pivot Field Names]</local-name>
+            <parent-name>[Pivot]</parent-name>
+            <remote-alias>Pivot Field Names</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Pivot Field Values</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Pivot Field Values]</local-name>
+            <parent-name>[Pivot]</parent-name>
+            <remote-alias>Pivot Field Values</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='State Abbrevation' datatype='string' name='[Calculation_2271503084968566792]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='CASE [state_name]&#13;&#10;WHEN &apos;Alabama&apos; THEN &apos;AL&apos;&#13;&#10;WHEN &apos;Alaska&apos; THEN &apos;AK&apos;&#13;&#10;WHEN &apos;Arizona&apos; THEN &apos;AZ&apos;&#13;&#10;WHEN &apos;Arkansas&apos; THEN &apos;AR&apos;&#13;&#10;WHEN &apos;California&apos; THEN &apos;CA&apos;&#13;&#10;WHEN &apos;Colorado&apos; THEN &apos;CO&apos;&#13;&#10;WHEN &apos;Connecticut&apos; THEN &apos;CT&apos;&#13;&#10;WHEN &apos;Delaware&apos; THEN &apos;DE&apos;&#13;&#10;WHEN &apos;District of Columbia&apos; THEN &apos;DC&apos;&#13;&#10;WHEN &apos;Florida&apos; THEN &apos;FL&apos;&#13;&#10;WHEN &apos;Georgia&apos; THEN &apos;GA&apos;&#13;&#10;WHEN &apos;Hawaii&apos; THEN &apos;HI&apos;&#13;&#10;WHEN &apos;Idaho&apos; THEN &apos;ID&apos;&#13;&#10;WHEN &apos;Illinois&apos; THEN &apos;IL&apos;&#13;&#10;WHEN &apos;Indiana&apos; THEN &apos;IN&apos;&#13;&#10;WHEN &apos;Iowa&apos; THEN &apos;IA&apos;&#13;&#10;WHEN &apos;Kansas&apos; THEN &apos;KS&apos;&#13;&#10;WHEN &apos;Kentucky&apos; THEN &apos;KY&apos;&#13;&#10;WHEN &apos;Louisiana&apos; THEN &apos;LA&apos;&#13;&#10;WHEN &apos;Maine&apos; THEN &apos;ME&apos;&#13;&#10;WHEN &apos;Maryland&apos; THEN &apos;MD&apos;&#13;&#10;WHEN &apos;Massachusetts&apos; THEN &apos;MA&apos;&#13;&#10;WHEN &apos;Michigan&apos; THEN &apos;MI&apos;&#13;&#10;WHEN &apos;Minnesota&apos; THEN &apos;MN&apos;&#13;&#10;WHEN &apos;Mississippi&apos; THEN &apos;MS&apos;&#13;&#10;WHEN &apos;Missouri&apos; THEN &apos;MO&apos;&#13;&#10;WHEN &apos;Montana&apos; THEN &apos;MT&apos;&#13;&#10;WHEN &apos;Nebraska&apos; THEN &apos;NE&apos;&#13;&#10;WHEN &apos;Nevada&apos; THEN &apos;NV&apos;&#13;&#10;WHEN &apos;New Hampshire&apos; THEN &apos;NH&apos;&#13;&#10;WHEN &apos;New Jersey&apos; THEN &apos;NJ&apos;&#13;&#10;WHEN &apos;New Mexico&apos; THEN &apos;NM&apos;&#13;&#10;WHEN &apos;New York&apos; THEN &apos;NY&apos;&#13;&#10;WHEN &apos;North Carolina&apos; THEN &apos;NC&apos;&#13;&#10;WHEN &apos;North Dakota&apos; THEN &apos;ND&apos;&#13;&#10;WHEN &apos;Ohio&apos; THEN &apos;OH&apos;&#13;&#10;WHEN &apos;Oklahoma&apos; THEN &apos;OK&apos;&#13;&#10;WHEN &apos;Oregon&apos; THEN &apos;OR&apos;&#13;&#10;WHEN &apos;Pennsylvania&apos; THEN &apos;PA&apos;&#13;&#10;WHEN &apos;Rhode Island&apos; THEN &apos;RI&apos;&#13;&#10;WHEN &apos;South Carolina&apos; THEN &apos;SC&apos;&#13;&#10;WHEN &apos;South Dakota&apos; THEN &apos;SD&apos;&#13;&#10;WHEN &apos;Tennessee&apos; THEN &apos;TN&apos;&#13;&#10;WHEN &apos;Texas&apos; THEN &apos;TX&apos;&#13;&#10;WHEN &apos;Utah&apos; THEN &apos;UT&apos;&#13;&#10;WHEN &apos;Vermont&apos; THEN &apos;VT&apos;&#13;&#10;WHEN &apos;Virginia&apos; THEN &apos;VA&apos;&#13;&#10;WHEN &apos;Washington&apos; THEN &apos;WA&apos;&#13;&#10;WHEN &apos;West Virginia&apos; THEN &apos;WV&apos;&#13;&#10;WHEN &apos;Wisconsin&apos; THEN &apos;WI&apos;&#13;&#10;WHEN &apos;Wyoming&apos; THEN &apos;WY&apos;&#13;&#10;END' />
+      </column>
+      <column datatype='real' default-format='c#,##0,,,.00B;(#,##0,,,.00B)' name='[Pivot Field Values]' role='measure' type='quantitative' />
+      <column caption='project-sunroof-state.csv' datatype='table' name='[__tableau_internal_object_id__].[project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876]' role='measure' type='quantitative' />
+      <column caption='Carbon Offset Metric Tons' datatype='real' name='[carbon_offset_metric_tons]' role='measure' type='quantitative' />
+      <column caption='Count Qualified' datatype='real' name='[count_qualified]' role='measure' type='quantitative' />
+      <column caption='Existing Installs Count' datatype='real' name='[existing_installs_count]' role='measure' type='quantitative' />
+      <column caption='Kw Total' datatype='real' name='[kw_total]' role='measure' type='quantitative' />
+      <column caption='Number Of Panels Total' datatype='real' name='[number_of_panels_total]' role='measure' type='quantitative' />
+      <column caption='Percent Qualified' datatype='real' name='[percent_qualified]' role='measure' type='quantitative' />
+      <column caption='State Name' datatype='string' name='[state_name]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='Yearly Sunlight Kwh Total' datatype='real' name='[yearly_sunlight_kwh_total]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='project-sunroof-state.csv' id='project-sunroof-state.csv_49E292D7C0144D2FB9BA5F7671607876'>
+            <properties context=''>
+              <relation name='Pivot' type='pivot'>
+                <columns>
+                  <column datatype='string' name='Pivot Field Names' />
+                  <column datatype='real' name='Pivot Field Values' />
+                </columns>
+                <tag name='Pivot Field Names'>
+                  <value name='[Yearly Sunlight Kwh E]' />
+                  <value name='[Yearly Sunlight Kwh F]' />
+                  <value name='[Yearly Sunlight Kwh N]' />
+                  <value name='[Yearly Sunlight Kwh S]' />
+                  <value name='[Yearly Sunlight Kwh W]' />
+                </tag>
+                <groups>
+                  <group name='Pivot Field Values'>
+                    <field name='[project-sunroof-state.csv].[yearly_sunlight_kwh_e]' />
+                    <field name='[project-sunroof-state.csv].[yearly_sunlight_kwh_f]' />
+                    <field name='[project-sunroof-state.csv].[yearly_sunlight_kwh_n]' />
+                    <field name='[project-sunroof-state.csv].[yearly_sunlight_kwh_s]' />
+                    <field name='[project-sunroof-state.csv].[yearly_sunlight_kwh_w]' />
+                  </group>
+                </groups>
+                <relation connection='textscan.1islxic0zlylnk16zwk6n0n3ixqe' name='project-sunroof-state.csv' table='[project-sunroof-state#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                    <column datatype='string' name='state_name' ordinal='0' />
+                    <column datatype='real' name='count_qualified' ordinal='1' />
+                    <column datatype='real' name='percent_qualified' ordinal='2' />
+                    <column datatype='real' name='number_of_panels_total' ordinal='3' />
+                    <column datatype='real' name='kw_total' ordinal='4' />
+                    <column datatype='real' name='yearly_sunlight_kwh_n' ordinal='5' />
+                    <column datatype='real' name='yearly_sunlight_kwh_s' ordinal='6' />
+                    <column datatype='real' name='yearly_sunlight_kwh_e' ordinal='7' />
+                    <column datatype='real' name='yearly_sunlight_kwh_w' ordinal='8' />
+                    <column datatype='real' name='yearly_sunlight_kwh_f' ordinal='9' />
+                    <column datatype='real' name='yearly_sunlight_kwh_total' ordinal='10' />
+                    <column datatype='real' name='carbon_offset_metric_tons' ordinal='11' />
+                    <column datatype='real' name='existing_installs_count' ordinal='12' />
+                  </columns>
+                </relation>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <actions>
+    <edit-parameter-action caption='Drill from Region to States' name='[Action1_E2917979DCBF4876B6869092DC465BCD]'>
+      <activation type='on-select' />
+      <source type='sheet' worksheet='Map' />
+      <agg-type type='attr' />
+      <clear-option type='do-nothing' value='s:LROOT:' />
+      <params>
+        <param name='source-field' value='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Region:nk]' />
+        <param name='target-parameter' value='[Parameters].[Parameter 1]' />
+      </params>
+    </edit-parameter-action>
+  </actions>
+  <worksheets>
+    <worksheet name='Banner'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='project-sunroof-state.csv+ (Multiple Connections)' name='federated.0a5vver1d14klj0ztkctt16qyowr' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Region Parameter' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;West&quot;'>
+              <calculation class='tableau' formula='&quot;West&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0a5vver1d14klj0ztkctt16qyowr'>
+            <column caption='% Qualified for Selected Region' datatype='real' name='[Calculation_2271503084946509828]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Region] = [Parameters].[Parameter 1]&#13;&#10;THEN [percent_qualified]&#13;&#10;END' />
+            </column>
+            <column caption='Total Power for Selected Region' datatype='real' name='[Calculation_2271503084946632709]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Region] = [Parameters].[Parameter 1]&#13;&#10;THEN [kw_total]&#13;&#10;END' />
+            </column>
+            <column aggregate-role-from='[State]' datatype='string' name='[Region]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_2271503084946509828]' derivation='Avg' name='[avg:Calculation_2271503084946509828:qk]' pivot='key' type='quantitative' />
+            <column caption='Kw Total' datatype='real' name='[kw_total]' role='measure' type='quantitative' />
+            <column caption='Percent Qualified' datatype='real' default-format='c#,##0&quot;%&quot;;(#,##0&quot;%&quot;)' name='[percent_qualified]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_2271503084946632709]' derivation='Sum' name='[sum:Calculation_2271503084946632709:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0a5vver1d14klj0ztkctt16qyowr].[avg:Calculation_2271503084946509828:qk]' />
+              <text column='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:Calculation_2271503084946632709:qk]' />
+              <text column='[Parameters].[Parameter 1]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run fontalignment='0' fontsize='11'>Region:</run>
+                <run fontalignment='0' fontcolor='#f28e2b' fontsize='11'>Æ </run>
+                <run fontalignment='0' fontcolor='#aa0000' fontsize='11'>&lt;[Parameters].[Parameter 1]&gt;</run>
+                <run fontalignment='0'>Æ&#10;</run>
+                <run fontalignment='0' fontsize='11'>Suitable for Solar: </run>
+                <run fontalignment='0' fontcolor='#aa0000' fontsize='11'><![CDATA[<[federated.0a5vver1d14klj0ztkctt16qyowr].[avg:Calculation_2271503084946509828:qk]>%]]></run>
+                <run fontalignment='0'>Æ&#10;</run>
+                <run fontalignment='0' fontsize='11'>Solar Roof Total Power: </run>
+                <run fontalignment='0' fontcolor='#aa0000' fontsize='11'><![CDATA[<[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:Calculation_2271503084946632709:qk]> kW]]></run>
+                <run fontalignment='0'>Æ&#10;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{4686C584-2ABA-47CD-9962-A5C2F99F57C3}' />
+    </worksheet>
+    <worksheet name='Map'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='project-sunroof-state.csv+ (Multiple Connections)' name='federated.0a5vver1d14klj0ztkctt16qyowr' />
+            <datasource name='Parameters' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Region Parameter' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;West&quot;'>
+              <calculation class='tableau' formula='&quot;West&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0a5vver1d14klj0ztkctt16qyowr'>
+            <column caption='State Code to Show' datatype='string' name='[Calculation_2271503084944199683]' role='dimension' semantic-role='[State].[Name]' type='nominal'>
+              <calculation class='tableau' formula='IF [Region] = [Parameters].[Parameter 1]&#13;&#10;THEN [State Code]&#13;&#10;END' />
+            </column>
+            <column aggregate-role-from='[State]' datatype='string' name='[Region]' role='dimension' type='nominal' />
+            <column datatype='string' name='[State Code]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column datatype='string' name='[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[State]' derivation='Attribute' name='[attr:State:nk]' pivot='key' type='nominal' />
+            <column-instance column='[percent_qualified]' derivation='Avg' name='[avg:percent_qualified:qk]' pivot='key' type='quantitative' />
+            <column caption='Count Qualified' datatype='real' default-format='c#,##0,K;(#,##0,K)' name='[count_qualified]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_2271503084944199683]' derivation='None' name='[none:Calculation_2271503084944199683:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Region]' derivation='None' name='[none:Region:nk]' pivot='key' type='nominal' />
+            <column caption='Percent Qualified' datatype='real' default-format='c#,##0&quot;%&quot;;(#,##0&quot;%&quot;)' name='[percent_qualified]' role='measure' type='quantitative' />
+            <column-instance column='[count_qualified]' derivation='Sum' name='[sum:count_qualified:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0a5vver1d14klj0ztkctt16qyowr].[Latitude (generated)]' included-values='non-null' />
+          <filter class='quantitative' column='[federated.0a5vver1d14klj0ztkctt16qyowr].[Longitude (generated)]' included-values='non-null' />
+          <slices>
+            <column>[federated.0a5vver1d14klj0ztkctt16qyowr].[Latitude (generated)]</column>
+            <column>[federated.0a5vver1d14klj0ztkctt16qyowr].[Longitude (generated)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='1' field='[federated.0a5vver1d14klj0ztkctt16qyowr].[Latitude (generated)]' field-type='quantitative' fold='true' max='6430925.3914040588' min='2771312.58076075' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0a5vver1d14klj0ztkctt16qyowr].[Longitude (generated)]' field-type='quantitative' max='-5255582.9590281285' min='-16200219.597169219' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0a5vver1d14klj0ztkctt16qyowr].[Latitude (generated)]' field-type='quantitative' max='6430925.3914040588' min='2771312.58076075' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:count_qualified:qk]' max='21000000.0' palette='orange_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='omit-on-special' field='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Calculation_2271503084944199683:nk]' value='false' />
+            <format attr='break-on-special' field='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Calculation_2271503084944199683:nk]' value='false' />
+            <format attr='show-null-value-warning' field='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Calculation_2271503084944199683:nk]' value='false' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='1' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Multipolygon' />
+            <encodings>
+              <color column='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:count_qualified:qk]' />
+              <text column='[federated.0a5vver1d14klj0ztkctt16qyowr].[avg:percent_qualified:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0a5vver1d14klj0ztkctt16qyowr].[Latitude (generated)]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Multipolygon' />
+            <encodings>
+              <color column='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:count_qualified:qk]' />
+              <text column='[federated.0a5vver1d14klj0ztkctt16qyowr].[avg:percent_qualified:qk]' />
+              <lod column='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Region:nk]' />
+              <geometry column='[federated.0a5vver1d14klj0ztkctt16qyowr].[Geometry (generated)]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='false' />
+                <format attr='mark-labels-mode' value='selection' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0a5vver1d14klj0ztkctt16qyowr].[Latitude (generated)]' y-index='1'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Multipolygon' />
+            <encodings>
+              <color column='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:count_qualified:qk]' />
+              <lod column='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Calculation_2271503084944199683:nk]' />
+              <tooltip column='[federated.0a5vver1d14klj0ztkctt16qyowr].[attr:State:nk]' />
+              <text column='[federated.0a5vver1d14klj0ztkctt16qyowr].[avg:percent_qualified:qk]' />
+              <geometry column='[federated.0a5vver1d14klj0ztkctt16qyowr].[Geometry (generated)]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0a5vver1d14klj0ztkctt16qyowr].[Latitude (generated)] + [federated.0a5vver1d14klj0ztkctt16qyowr].[Latitude (generated)])</rows>
+        <cols>[federated.0a5vver1d14klj0ztkctt16qyowr].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{E9E3FA8F-98AF-4076-BBAA-12C4511ABBE0}' />
+    </worksheet>
+    <worksheet name='Scatter Plot'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='project-sunroof-state.csv+ (Multiple Connections)' name='federated.0a5vver1d14klj0ztkctt16qyowr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0a5vver1d14klj0ztkctt16qyowr'>
+            <column auto-hidden='true' caption='Clusters' datatype='integer' hidden='true' is-adhoc-cluster='true' name='[AdhocCluster:1]' parent-model='[AnalyticModel:{d7828d00-c056-471c-9521-e978f74a4b21}]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='-1' value='Cluster Outliers' />
+                <alias key='0' value='Not Clustered' />
+                <alias key='1' value='Cluster 1' />
+                <alias key='2' value='Cluster 2' />
+                <alias key='3' value='Cluster 3' />
+                <alias key='4' value='Cluster 4' />
+                <alias key='5' value='Cluster 5' />
+                <alias key='6' value='Cluster 6' />
+                <alias key='7' value='Cluster 7' />
+                <alias key='8' value='Cluster 8' />
+                <alias key='9' value='Cluster 9' />
+                <alias key='10' value='Cluster 10' />
+                <alias key='11' value='Cluster 11' />
+                <alias key='12' value='Cluster 12' />
+                <alias key='13' value='Cluster 13' />
+                <alias key='14' value='Cluster 14' />
+                <alias key='15' value='Cluster 15' />
+                <alias key='16' value='Cluster 16' />
+                <alias key='17' value='Cluster 17' />
+                <alias key='18' value='Cluster 18' />
+                <alias key='19' value='Cluster 19' />
+                <alias key='20' value='Cluster 20' />
+                <alias key='21' value='Cluster 21' />
+                <alias key='22' value='Cluster 22' />
+                <alias key='23' value='Cluster 23' />
+                <alias key='24' value='Cluster 24' />
+                <alias key='25' value='Cluster 25' />
+                <alias key='26' value='Cluster 26' />
+                <alias key='27' value='Cluster 27' />
+                <alias key='28' value='Cluster 28' />
+                <alias key='29' value='Cluster 29' />
+                <alias key='30' value='Cluster 30' />
+                <alias key='31' value='Cluster 31' />
+                <alias key='32' value='Cluster 32' />
+                <alias key='33' value='Cluster 33' />
+                <alias key='34' value='Cluster 34' />
+                <alias key='35' value='Cluster 35' />
+                <alias key='36' value='Cluster 36' />
+                <alias key='37' value='Cluster 37' />
+                <alias key='38' value='Cluster 38' />
+                <alias key='39' value='Cluster 39' />
+                <alias key='40' value='Cluster 40' />
+                <alias key='41' value='Cluster 41' />
+                <alias key='42' value='Cluster 42' />
+                <alias key='43' value='Cluster 43' />
+                <alias key='44' value='Cluster 44' />
+                <alias key='45' value='Cluster 45' />
+                <alias key='46' value='Cluster 46' />
+                <alias key='47' value='Cluster 47' />
+                <alias key='48' value='Cluster 48' />
+                <alias key='49' value='Cluster 49' />
+                <alias key='50' value='Cluster 50' />
+              </aliases>
+            </column>
+            <column caption='Install Ratio' datatype='real' default-format='p0.00%' name='[Calculation_2271503084949016583]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[existing_installs_count]/[count_qualified]' />
+            </column>
+            <column aggregate-role-from='[State]' datatype='string' name='[Region]' role='dimension' type='nominal' />
+            <column datatype='string' name='[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[Region]' derivation='Attribute' name='[attr:Region:nk]' pivot='key' type='nominal' />
+            <column-instance column='[State]' derivation='Attribute' name='[attr:State:nk]' pivot='key' type='nominal' />
+            <column caption='Count Qualified' datatype='real' default-format='c#,##0,K;(#,##0,K)' name='[count_qualified]' role='measure' type='quantitative' />
+            <column caption='Existing Installs Count' datatype='real' name='[existing_installs_count]' role='measure' type='quantitative' />
+            <column-instance column='[AdhocCluster:1]' derivation='None' is-adhoc-cluster='true' name='[none:AdhocCluster:1:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_2271503084949016583]' derivation='Sum' name='[sum:Calculation_2271503084949016583:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[yearly_sunlight_kwh_total]' derivation='Sum' name='[sum:yearly_sunlight_kwh_total:qk]' pivot='key' type='quantitative' />
+            <column caption='Yearly Sunlight Kwh Total' datatype='real' default-format='c#,##0,,,B;(#,##0,,,B)' name='[yearly_sunlight_kwh_total]' role='measure' type='quantitative' />
+            <style>
+              <style-rule element='mark'>
+                <encoding attr='color' field='[none:AdhocCluster:1:ok]' type='palette'>
+                  <map to='#4e79a7'>
+                    <bucket>1</bucket>
+                  </map>
+                  <map to='#59a14f'>
+                    <bucket>5</bucket>
+                  </map>
+                  <map to='#76b7b2'>
+                    <bucket>4</bucket>
+                  </map>
+                  <map to='#9c755f'>
+                    <bucket>9</bucket>
+                  </map>
+                  <map to='#b07aa1'>
+                    <bucket>7</bucket>
+                  </map>
+                  <map to='#bab0ac'>
+                    <bucket>10</bucket>
+                  </map>
+                  <map to='#e15759'>
+                    <bucket>3</bucket>
+                  </map>
+                  <map to='#edc948'>
+                    <bucket>6</bucket>
+                  </map>
+                  <map to='#f28e2b'>
+                    <bucket>2</bucket>
+                  </map>
+                  <map to='#ff9da7'>
+                    <bucket>8</bucket>
+                  </map>
+                </encoding>
+              </style-rule>
+            </style>
+          </datasource-dependencies>
+          <aggregation value='false' />
+        </view>
+        <style>
+          <style-rule element='legend-title'>
+            <format attr='font-size' value='8' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:AdhocCluster:1:ok]' value=''>
+              <formatted-text />
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <tooltip column='[federated.0a5vver1d14klj0ztkctt16qyowr].[attr:State:nk]' />
+              <tooltip column='[federated.0a5vver1d14klj0ztkctt16qyowr].[attr:Region:nk]' />
+              <color column='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:AdhocCluster:1:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:yearly_sunlight_kwh_total:qk]</rows>
+        <cols>[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:Calculation_2271503084949016583:qk]</cols>
+      </table>
+      <simple-id uuid='{BE995A49-93A1-4EB8-8A3F-BF10DFB4004C}' />
+    </worksheet>
+    <worksheet name='Solar Energy Potential by Roof Orientation and State (kWh/year)'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='project-sunroof-state' name='federated.1xlkvxe0a5m3dl11c2gmw1ht4evq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1xlkvxe0a5m3dl11c2gmw1ht4evq'>
+            <column caption='State Abbrevation' datatype='string' name='[Calculation_2271503084968566792]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [state_name]&#13;&#10;WHEN &apos;Alabama&apos; THEN &apos;AL&apos;&#13;&#10;WHEN &apos;Alaska&apos; THEN &apos;AK&apos;&#13;&#10;WHEN &apos;Arizona&apos; THEN &apos;AZ&apos;&#13;&#10;WHEN &apos;Arkansas&apos; THEN &apos;AR&apos;&#13;&#10;WHEN &apos;California&apos; THEN &apos;CA&apos;&#13;&#10;WHEN &apos;Colorado&apos; THEN &apos;CO&apos;&#13;&#10;WHEN &apos;Connecticut&apos; THEN &apos;CT&apos;&#13;&#10;WHEN &apos;Delaware&apos; THEN &apos;DE&apos;&#13;&#10;WHEN &apos;District of Columbia&apos; THEN &apos;DC&apos;&#13;&#10;WHEN &apos;Florida&apos; THEN &apos;FL&apos;&#13;&#10;WHEN &apos;Georgia&apos; THEN &apos;GA&apos;&#13;&#10;WHEN &apos;Hawaii&apos; THEN &apos;HI&apos;&#13;&#10;WHEN &apos;Idaho&apos; THEN &apos;ID&apos;&#13;&#10;WHEN &apos;Illinois&apos; THEN &apos;IL&apos;&#13;&#10;WHEN &apos;Indiana&apos; THEN &apos;IN&apos;&#13;&#10;WHEN &apos;Iowa&apos; THEN &apos;IA&apos;&#13;&#10;WHEN &apos;Kansas&apos; THEN &apos;KS&apos;&#13;&#10;WHEN &apos;Kentucky&apos; THEN &apos;KY&apos;&#13;&#10;WHEN &apos;Louisiana&apos; THEN &apos;LA&apos;&#13;&#10;WHEN &apos;Maine&apos; THEN &apos;ME&apos;&#13;&#10;WHEN &apos;Maryland&apos; THEN &apos;MD&apos;&#13;&#10;WHEN &apos;Massachusetts&apos; THEN &apos;MA&apos;&#13;&#10;WHEN &apos;Michigan&apos; THEN &apos;MI&apos;&#13;&#10;WHEN &apos;Minnesota&apos; THEN &apos;MN&apos;&#13;&#10;WHEN &apos;Mississippi&apos; THEN &apos;MS&apos;&#13;&#10;WHEN &apos;Missouri&apos; THEN &apos;MO&apos;&#13;&#10;WHEN &apos;Montana&apos; THEN &apos;MT&apos;&#13;&#10;WHEN &apos;Nebraska&apos; THEN &apos;NE&apos;&#13;&#10;WHEN &apos;Nevada&apos; THEN &apos;NV&apos;&#13;&#10;WHEN &apos;New Hampshire&apos; THEN &apos;NH&apos;&#13;&#10;WHEN &apos;New Jersey&apos; THEN &apos;NJ&apos;&#13;&#10;WHEN &apos;New Mexico&apos; THEN &apos;NM&apos;&#13;&#10;WHEN &apos;New York&apos; THEN &apos;NY&apos;&#13;&#10;WHEN &apos;North Carolina&apos; THEN &apos;NC&apos;&#13;&#10;WHEN &apos;North Dakota&apos; THEN &apos;ND&apos;&#13;&#10;WHEN &apos;Ohio&apos; THEN &apos;OH&apos;&#13;&#10;WHEN &apos;Oklahoma&apos; THEN &apos;OK&apos;&#13;&#10;WHEN &apos;Oregon&apos; THEN &apos;OR&apos;&#13;&#10;WHEN &apos;Pennsylvania&apos; THEN &apos;PA&apos;&#13;&#10;WHEN &apos;Rhode Island&apos; THEN &apos;RI&apos;&#13;&#10;WHEN &apos;South Carolina&apos; THEN &apos;SC&apos;&#13;&#10;WHEN &apos;South Dakota&apos; THEN &apos;SD&apos;&#13;&#10;WHEN &apos;Tennessee&apos; THEN &apos;TN&apos;&#13;&#10;WHEN &apos;Texas&apos; THEN &apos;TX&apos;&#13;&#10;WHEN &apos;Utah&apos; THEN &apos;UT&apos;&#13;&#10;WHEN &apos;Vermont&apos; THEN &apos;VT&apos;&#13;&#10;WHEN &apos;Virginia&apos; THEN &apos;VA&apos;&#13;&#10;WHEN &apos;Washington&apos; THEN &apos;WA&apos;&#13;&#10;WHEN &apos;West Virginia&apos; THEN &apos;WV&apos;&#13;&#10;WHEN &apos;Wisconsin&apos; THEN &apos;WI&apos;&#13;&#10;WHEN &apos;Wyoming&apos; THEN &apos;WY&apos;&#13;&#10;END' />
+            </column>
+            <column datatype='string' name='[Pivot Field Names]' role='dimension' type='nominal' />
+            <column datatype='real' default-format='c#,##0,,,.00B;(#,##0,,,.00B)' name='[Pivot Field Values]' role='measure' type='quantitative' />
+            <column-instance column='[Pivot Field Values]' derivation='Avg' name='[avg:Pivot Field Values:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2271503084968566792]' derivation='None' name='[none:Calculation_2271503084968566792:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Pivot Field Names]' derivation='None' name='[none:Pivot Field Names:nk]' pivot='key' type='nominal' />
+            <column-instance column='[state_name]' derivation='None' name='[none:state_name:nk]' pivot='key' type='nominal' />
+            <column caption='State Name' datatype='string' name='[state_name]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Pivot Field Names:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' shelf='rows' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='1055' />
+            <format attr='font-size' data-class='total' scope='rows' value='8' />
+            <format attr='font-size' data-class='subtotal' scope='rows' value='8' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' type='custom-interpolated'>
+              <color-palette custom='true' name='' type='ordered-sequential'>
+                <color>#f1f1f1</color>
+                <color>#ded5e7</color>
+                <color>#cdbcde</color>
+                <color>#bca3d5</color>
+                <color>#ac8dcc</color>
+                <color>#9d77c3</color>
+                <color>#8e63b9</color>
+                <color>#8051b0</color>
+                <color>#7340a7</color>
+                <color>#66309e</color>
+                <color>#5b2295</color>
+              </color-palette>
+            </encoding>
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='on' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <size column='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' />
+              <color column='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' />
+              <text column='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Calculation_2271503084968566792:nk]' />
+              <text column='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:state_name:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='auto' />
+                <format attr='vertical-align' value='auto' />
+              </style-rule>
+              <style-rule element='datalabel'>
+                <format attr='color-mode' value='auto' />
+                <format attr='font-size' value='8' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-range-field' value='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Pivot Field Names:nk]' />
+                <format attr='mark-labels-range-scope' value='cell' />
+                <format attr='mark-labels-mode' value='all' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Pivot Field Names:nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{3CF1DC4E-A05D-4CA7-AA9D-B72AC6D72653}' />
+    </worksheet>
+    <worksheet name='Solar-to-Carbon Offset Ratio'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='project-sunroof-state.csv+ (Multiple Connections)' name='federated.0a5vver1d14klj0ztkctt16qyowr' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Region Parameter' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;West&quot;'>
+              <calculation class='tableau' formula='&quot;West&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0a5vver1d14klj0ztkctt16qyowr'>
+            <column caption='State Code to Show' datatype='string' name='[Calculation_2271503084944199683]' role='dimension' semantic-role='[State].[Name]' type='nominal'>
+              <calculation class='tableau' formula='IF [Region] = [Parameters].[Parameter 1]&#13;&#10;THEN [State Code]&#13;&#10;END' />
+            </column>
+            <column caption='Solar-to-Carbon Offset Ratio' datatype='real' name='[Calculation_2271503084948234246]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[carbon_offset_metric_tons]/[kw_total]' />
+            </column>
+            <column aggregate-role-from='[State]' datatype='string' name='[Region]' role='dimension' type='nominal' />
+            <column datatype='string' name='[State Code]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column datatype='string' name='[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[State]' derivation='Attribute' name='[attr:State:nk]' pivot='key' type='nominal' />
+            <column caption='Carbon Offset Metric Tons' datatype='real' name='[carbon_offset_metric_tons]' role='measure' type='quantitative' />
+            <column caption='Kw Total' datatype='real' name='[kw_total]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_2271503084944199683]' derivation='None' name='[none:Calculation_2271503084944199683:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_2271503084948234246]' derivation='Sum' name='[sum:Calculation_2271503084948234246:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Calculation_2271503084944199683:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;AL&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;AR&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;AZ&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;CA&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;CO&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;CT&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;DC&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;DE&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;FL&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;GA&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;IA&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;ID&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;IL&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;IN&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;KS&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;KY&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;LA&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;MA&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;MD&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;ME&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;MI&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;MN&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;MO&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;MS&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;MT&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;NC&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;ND&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;NE&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;NH&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;NJ&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;NM&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;NV&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;NY&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;OH&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;OK&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;OR&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;PA&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;RI&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;SC&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;SD&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;TN&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;TX&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;UT&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;VA&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;VT&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;WA&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;WI&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;WV&quot;' />
+              <groupfilter function='member' level='[none:Calculation_2271503084944199683:nk]' member='&quot;WY&quot;' />
+            </groupfilter>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Calculation_2271503084944199683:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:Calculation_2271503084948234246:qk]' shelf='columns' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Calculation_2271503084944199683:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <tooltip column='[federated.0a5vver1d14klj0ztkctt16qyowr].[attr:State:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:Calculation_2271503084948234246:qk]</rows>
+        <cols>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Calculation_2271503084944199683:nk]</cols>
+      </table>
+      <simple-id uuid='{C3EA2962-1CAE-4E63-A05E-D7774906A0A2}' />
+    </worksheet>
+    <worksheet name='Yearly Average Sunlight Distribution'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='project-sunroof-state' name='federated.1xlkvxe0a5m3dl11c2gmw1ht4evq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1xlkvxe0a5m3dl11c2gmw1ht4evq'>
+            <column datatype='string' name='[Pivot Field Names]' role='dimension' type='nominal' />
+            <column datatype='real' default-format='c#,##0,,,.00B;(#,##0,,,.00B)' name='[Pivot Field Values]' role='measure' type='quantitative' />
+            <column-instance column='[Pivot Field Values]' derivation='Avg' name='[avg:Pivot Field Values:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Pivot Field Names]' derivation='None' name='[none:Pivot Field Names:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Pivot Field Names:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' scope='rows' value='Average Yearly Sunlight (kWh)' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Pivot Field Names:nk]' value='95' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' type='custom-interpolated'>
+              <color-palette custom='true' name='' type='ordered-sequential'>
+                <color>#f1f1f1</color>
+                <color>#e8e3ed</color>
+                <color>#dfd6ea</color>
+                <color>#d7cae6</color>
+                <color>#cebde3</color>
+                <color>#c6b1e0</color>
+                <color>#bea5dc</color>
+                <color>#b69ad9</color>
+                <color>#ae8ed5</color>
+                <color>#a783d2</color>
+                <color>#a079cf</color>
+              </color-palette>
+            </encoding>
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' />
+              <lod column='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Pivot Field Names:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#ffbe7d' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]</rows>
+        <cols>[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Pivot Field Names:nk]</cols>
+      </table>
+      <simple-id uuid='{B1C286D4-930A-4510-AD4B-5CB88C390B74}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Solar Panel Marketing Dashboard'>
+      <style />
+      <size sizing-mode='automatic' />
+      <datasources>
+        <datasource name='Parameters' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Region Parameter' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;West&quot;'>
+          <calculation class='tableau' formula='&quot;West&quot;' />
+          <members>
+            <member value='&quot;Midwest&quot;' />
+            <member value='&quot;Northeast&quot;' />
+            <member value='&quot;South&quot;' />
+            <member value='&quot;West&quot;' />
+          </members>
+        </column>
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='92299' id='27' param='horz' type-v2='layout-flow' w='99064' x='468' y='6808'>
+            <zone h='92299' id='7' param='horz' type-v2='layout-flow' w='99064' x='468' y='6808'>
+              <zone fixed-size='462' h='92299' id='5' is-fixed='true' type-v2='layout-basic' w='27033' x='468' y='6808'>
+                <zone h='92299' id='32' is-fixed='true' type-v2='layout-basic' w='27033' x='468' y='6808'>
+                  <zone h='92299' id='33' param='vert' type-v2='layout-flow' w='27033' x='468' y='6808'>
+                    <zone forceUpdate='true' h='6920' id='15' type-v2='text' w='27033' x='468' y='6808'>
+                      <formatted-text>
+                        <run fontcolor='#000000' fontsize='10'>Interactive Tableau dashboard visualizing US solar installation potential through regional heat maps, installation ratios, and sunlight-to-carbon metrics.</run>
+                      </formatted-text>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                    <zone h='7924' id='12' name='Banner' show-title='false' w='27033' x='468' y='13728'>
+                      <layout-cache fixed-size-h='63' type-h='fixed' type-w='fixed' />
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                    <zone h='77455' id='11' name='Solar-to-Carbon Offset Ratio' show-title='false' w='27033' x='468' y='21652'>
+                      <layout-cache minheight='140' type-h='scalable' type-w='fixed' />
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                  </zone>
+                </zone>
+              </zone>
+              <zone fixed-size='969' h='92299' id='17' is-fixed='true' type-v2='layout-basic' w='56700' x='27501' y='6808'>
+                <zone h='36830' id='6' param='vert' type-v2='layout-flow' w='56700' x='27501' y='6808'>
+                  <zone h='36830' id='25' name='Map' show-title='false' w='56700' x='27501' y='6808'>
+                    <layout-cache minheight='201' type-h='scalable' type-w='fixed' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+                <zone h='55469' id='23' param='horz' type-v2='layout-flow' w='56700' x='27501' y='43638'>
+                  <zone h='55469' id='19' name='Scatter Plot' w='29199' x='27501' y='43638'>
+                    <layout-cache minheight='198' minwidth='167' type-h='scalable' type-w='scalable' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='462' h='55469' id='13' is-fixed='true' name='Solar Energy Potential by Roof Orientation and State (kWh/year)' show-title='false' w='27501' x='56700' y='43638'>
+                    <layout-cache fixed-size-h='872' type-h='fixed' type-w='fixed' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone forceUpdate='true' h='5915' id='16' type-v2='text' w='99064' x='468' y='893'>
+            <formatted-text>
+              <run bold='true' fontalignment='1' fontcolor='#edc948' fontsize='14'>Solar Panel Marketing Dashboard</run>
+              <run fontalignment='1'>Æ&#10;</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+              <format attr='background-color' value='#aa0000' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='8259' id='14' name='Solar Energy Potential by Roof Orientation and State (kWh/year)' pane-specification-id='0' param='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' type-v2='color' w='12932' x='68988' y='87388' />
+        <zone h='6138' id='22' leg-item-layout='horz' name='Scatter Plot' pane-specification-id='0' param='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:AdhocCluster:1:ok]' type-v2='color' w='35011' x='33735' y='41741' />
+        <zone h='4911' id='29' mode='compact' param='[Parameters].[Parameter 1]' type-v2='paramctrl' w='11352' x='72030' y='22545' />
+        <zone h='8482' id='28' name='Map' pane-specification-id='1' param='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:count_qualified:qk]' type-v2='color' w='9889' x='72264' y='31585' />
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1650' minheight='1650' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='45' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98214' id='44' param='vert' type-v2='layout-flow' w='99064' x='468' y='893'>
+                <zone forceUpdate='true' h='5915' id='16' type-v2='text' w='99064' x='468' y='893'>
+                  <formatted-text>
+                    <run bold='true' fontalignment='1' fontcolor='#edc948' fontsize='14'>Solar Panel Marketing Dashboard</run>
+                    <run fontalignment='1'>Æ&#10;</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                    <format attr='background-color' value='#aa0000' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='6920' id='15' type-v2='text' w='27033' x='468' y='6808'>
+                  <formatted-text>
+                    <run fontcolor='#000000' fontsize='10'>Interactive Tableau dashboard visualizing US solar installation potential through regional heat maps, installation ratios, and sunlight-to-carbon metrics.</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='36830' id='25' is-fixed='true' name='Map' show-title='false' w='56700' x='27501' y='6808'>
+                  <layout-cache minheight='201' type-h='scalable' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8482' id='28' name='Map' pane-specification-id='1' param='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:count_qualified:qk]' type-v2='color' w='9889' x='72264' y='31585'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='55' h='7924' id='12' is-fixed='true' name='Banner' show-title='false' w='27033' x='468' y='13728'>
+                  <layout-cache fixed-size-h='63' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='77455' id='11' is-fixed='true' name='Solar-to-Carbon Offset Ratio' show-title='false' w='27033' x='468' y='21652'>
+                  <layout-cache minheight='140' type-h='scalable' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='4911' id='29' mode='compact' param='[Parameters].[Parameter 1]' type-v2='paramctrl' w='11352' x='72030' y='22545'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='55469' id='19' is-fixed='true' name='Scatter Plot' w='29199' x='27501' y='43638'>
+                  <layout-cache minheight='198' minwidth='167' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='6138' id='22' leg-item-layout='horz' name='Scatter Plot' pane-specification-id='0' param='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:AdhocCluster:1:ok]' type-v2='color' w='35011' x='33735' y='41741'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='55469' id='13' is-fixed='true' name='Solar Energy Potential by Roof Orientation and State (kWh/year)' show-title='false' w='27501' x='56700' y='43638'>
+                  <layout-cache fixed-size-h='872' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8259' id='14' name='Solar Energy Potential by Roof Orientation and State (kWh/year)' pane-specification-id='0' param='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' type-v2='color' w='12932' x='68988' y='87388'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{EA1B4947-3991-4D7A-B33D-1820922AD021}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='51'>
+    <window class='worksheet' name='Map'>
+      <cards>
+        <edge name='left'>
+          <strip size='243'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='38'>
+            <card type='columns' />
+          </strip>
+          <strip size='38'>
+            <card type='rows' />
+          </strip>
+          <strip size='47'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='287'>
+            <card mode='compact' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+          <strip size='100'>
+            <card pane-specification-id='1' param='[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:count_qualified:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Calculation_2271503084944199683:nk]</field>
+            <field>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:State:nk]</field>
+            <field>[federated.0a5vver1d14klj0ztkctt16qyowr].[sum:count_qualified:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{E489EF00-7F02-4B1A-89CF-76AE09E60C62}' />
+    </window>
+    <window class='worksheet' name='Banner'>
+      <cards>
+        <edge name='left'>
+          <strip size='200'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='38'>
+            <card type='columns' />
+          </strip>
+          <strip size='38'>
+            <card type='rows' />
+          </strip>
+          <strip size='38'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[Parameters].[Parameter 1]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{BB058E44-EC95-42BD-82D5-9EE0C25866A0}' />
+    </window>
+    <window class='worksheet' name='Solar-to-Carbon Offset Ratio'>
+      <cards>
+        <edge name='left'>
+          <strip size='200'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='38'>
+            <card type='columns' />
+          </strip>
+          <strip size='38'>
+            <card type='rows' />
+          </strip>
+          <strip size='38'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Calculation_2271503084944199683:nk]</field>
+            <field>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:State Code:nk]</field>
+            <field>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:State:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{1EF7D37B-251D-42F9-89AE-9843AC08EBA5}' />
+    </window>
+    <window class='worksheet' name='Scatter Plot'>
+      <cards>
+        <edge name='left'>
+          <strip size='200'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='38'>
+            <card type='columns' />
+          </strip>
+          <strip size='38'>
+            <card type='rows' />
+          </strip>
+          <strip size='38'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='200'>
+            <card pane-specification-id='0' param='[federated.0a5vver1d14klj0ztkctt16qyowr].[none:AdhocCluster:1:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:AdhocCluster:1:ok]</field>
+            <field>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:Region:nk]</field>
+            <field>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:State:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{CC2C4628-EF35-4196-A1A6-6BB43919EEE5}' />
+    </window>
+    <window class='worksheet' name='Yearly Average Sunlight Distribution'>
+      <cards>
+        <edge name='left'>
+          <strip size='345'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='109'>
+            <card type='columns' />
+          </strip>
+          <strip size='38'>
+            <card type='rows' />
+          </strip>
+          <strip size='38'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]</field>
+            <field>[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Pivot Field Names:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{21985388-0202-4A98-A3B4-4C064D97B58C}' />
+    </window>
+    <window class='worksheet' name='Solar Energy Potential by Roof Orientation and State (kWh/year)'>
+      <cards>
+        <edge name='left'>
+          <strip size='125'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='38'>
+            <card type='columns' />
+          </strip>
+          <strip size='38'>
+            <card type='rows' />
+          </strip>
+          <strip size='38'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='125'>
+            <card pane-specification-id='0' param='[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[avg:Pivot Field Values:qk]</field>
+            <field>[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Calculation_2271503084968566792:nk]</field>
+            <field>[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:Pivot Field Names:nk]</field>
+            <field>[federated.1xlkvxe0a5m3dl11c2gmw1ht4evq].[none:state_name:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{A970FCDD-0C1B-4956-89FD-C1EB41E89D6A}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Solar Panel Marketing Dashboard'>
+      <viewpoints>
+        <viewpoint name='Banner' />
+        <viewpoint name='Map'>
+          <zoom type='entire-view' />
+          <default-map-tool-selection tool='16' />
+        </viewpoint>
+        <viewpoint name='Scatter Plot'>
+          <zoom type='entire-view' />
+          <highlight>
+            <color-one-way>
+              <field>[federated.0a5vver1d14klj0ztkctt16qyowr].[none:AdhocCluster:1:ok]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+        <viewpoint name='Solar Energy Potential by Roof Orientation and State (kWh/year)' />
+        <viewpoint name='Solar-to-Carbon Offset Ratio'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='7' />
+      <simple-id uuid='{030227A5-DD45-462A-A4C9-E5590AA104D2}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='67' name='Banner' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Map' width='192'>
+      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
+      PfFRnwAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Scatter Plot' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Solar Energy Potential by Roof Orientation and State (kWh/year)' width='192'>
+      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
+      phP+P+fCSXg9DKJ2AAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='Solar Panel Marketing Dashboard' width='192'>
+      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
+      vw0ixcKPbQAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Solar-to-Carbon Offset Ratio' width='192'>
+      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
+      /wEpOaJ3A5k5VwAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Yearly Average Sunlight Distribution' width='192'>
+      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
+      rkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>
