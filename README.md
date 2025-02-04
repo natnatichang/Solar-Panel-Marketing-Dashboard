@@ -23,7 +23,7 @@ The dashboard uses a static CSV dataset containing:
 - CSV data file
 
 ## How to Use
-1.
+1. Clone the repository:
 ```bash
 git clone https://github.com/[your-username]/Solar-Panel-Marketing-Dashboard.git
 ```
